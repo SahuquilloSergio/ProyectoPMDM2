@@ -9,6 +9,7 @@ import android.media.RingtoneManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.support.v4.app.ActivityCompat
 import android.support.v4.app.NotificationCompat
 
 
@@ -16,12 +17,14 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     val TAG = "FirebaseMessagingService"
 
     @SuppressLint("LongLogTag")
+
     override fun onMessageReceived(remoteMessage: RemoteMessage?) {
         Log.d(TAG, "Dikirim dari: : ${remoteMessage?.data}")
 
         if (remoteMessage?.notification != null) {
             showNotification(remoteMessage?.notification?.title, remoteMessage?.notification?.body)
         }
+
     }
 
     private fun showNotification(title: String?, body: String?) {
